@@ -1,6 +1,7 @@
-const port = 3000;
+const port = 8080;
 
-const app = require('express')();
+const express = require('express');
+const app = express();
 var http = require('http').createServer(app)
 var io = require('socket.io')(http, {
   cors: {
@@ -21,15 +22,6 @@ var users = new Users;
 var game = new TicTacToe;
 var X = ""
 var O = ""
-const emulateMove = require('./Emulate')(game)
-
-var count = 0;
-app.get('/', (req, res) => {
-  res.send({
-    'data': 'hello world!',
-    'count': count++,
-  })
-})
 
 function updateGame() {
   io.emit('game-update', game.moves, game.calculateWinner())
@@ -73,6 +65,14 @@ io.on('connection', socket => {
   updateGame()
 })
 
+if ('STATIC_CONTENT_DIR' in process.env) {
+  const dir = process.env['STATIC_CONTENT_DIR']
+  app.use(express.static(dir))
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(dir, 'index.html'))
+  })
+}
+
 // setInterval(() => {
 //   emulateMove()
 //   updateGame()
@@ -83,6 +83,8 @@ app.use(async (err, req, res, next) => {
   res.status(500).send({ error: err.toString() });
 })
 
+
+console.log(process.env)
 http.listen(port, () => {
   console.log(`Listening on *:${port}`);
   users.getUser('d51fff98-089f-4003-922f-c6327b9ba874')
