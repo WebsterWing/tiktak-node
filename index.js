@@ -66,7 +66,7 @@ io.on('connection', socket => {
 })
 
 if ('STATIC_CONTENT_DIR' in process.env) {
-  const dir = process.env['STATIC_CONTENT_DIR']
+  const dir = process.env['TIKTAK_STATIC_CONTENT_DIR']
   app.use(express.static(dir))
   app.get('/', (req, res) => {
     res.sendFile(path.join(dir, 'index.html'))
