@@ -1,4 +1,4 @@
-const port = 8080;
+const port = (process.argv[2] && parseInt(process.argv[2], 10)) || 8080;
 
 const express = require('express');
 const app = express();
