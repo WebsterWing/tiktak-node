@@ -1,2 +1,2 @@
 #!/bin/bash
-pm2 stop tiktak-node || exit 0
+pm2 stop tiktak-node
