@@ -1,3 +1,2 @@
 #!/bin/bash
-cd /var/www/TikTak
-npm install
+sudo npm install pm2 -g

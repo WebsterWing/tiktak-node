@@ -1,2 +1,3 @@
 #! /bin/bash
-cp /var/www/TikTak/TikTak.service /etc/systemd/system
+cd /home/ec2-user/tiktak-node
+npm install

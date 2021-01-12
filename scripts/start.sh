@@ -1,4 +1,5 @@
 #!/bin/bash
-systemctl daemon-reload
-systemctl enable TikTak
-systemctl start TikTak
+pm2 start ~/tiktak-node/index.js
+pm2 unstartup
+pm2 startup
+pm2 save
