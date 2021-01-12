@@ -1,4 +1,5 @@
 #!/bin/bash
+. ~/.nvm/nvm.sh
 pm2 start ~/tiktak-node/index.js
 pm2 unstartup
 pm2 startup
