@@ -24,7 +24,7 @@ hooks:
   BeforeInstall:
     - location: scripts/dependencies.sh
       timeout: 60
-      runas: ec2-user
+      runas: root
 
   AfterInstall:
     - location: scripts/permissions.sh
