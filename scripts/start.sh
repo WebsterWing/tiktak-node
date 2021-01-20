@@ -1,6 +1,5 @@
 #!/bin/bash
-. ~/.nvm/nvm.sh
-pm2 start ~/tiktak-node/index.js
-pm2 unstartup
+cd /home/ec2
+pm2 start tiktak-node
 pm2 startup
 pm2 save
